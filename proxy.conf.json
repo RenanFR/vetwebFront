@@ -1,0 +1,8 @@
+{
+    "/vetweb/api/*": {
+      "target": "http://localhost:8070",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    }
+  }

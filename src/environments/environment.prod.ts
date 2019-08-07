@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  WS_ADDRESS: '/vetweb/api'
 };

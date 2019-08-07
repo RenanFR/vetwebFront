@@ -1,0 +1,54 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { AuthBaseComponent } from './layout/auth.base.component';
+import { LoginComponent } from './main/login.component';
+import { LoginRoutingModule } from './login-routing.module';
+import { AuthenticationService } from './services/authentication.service';
+import { UserService } from './services/user.service';
+import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EnableToLogin } from './utilities/enable.to.login';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+import { getGoogleClientCredentials } from './utilities/google.configuration';
+import { UserExistsValidator } from './validation/user.exists.validator';
+import { UserRegistrationComponent } from './registration/user.registration.component';
+import { isLoggedGuard } from './utilities/is.logged.guard';
+import { TranslateModule } from '@ngx-translate/core';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    RouterModule,
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    LoginRoutingModule,
+    HttpClientModule,
+    SocialLoginModule,
+    TranslateModule
+  ],
+  declarations: [
+    AuthBaseComponent,
+    LoginComponent,
+    UserRegistrationComponent
+  ],
+  exports: [
+    AuthBaseComponent,
+    LoginComponent,
+    UserRegistrationComponent
+  ],
+  providers: [
+    AuthenticationService,
+    UserService,
+    EnableToLogin,
+    {
+      provide: AuthServiceConfig,
+      useFactory: getGoogleClientCredentials
+    },
+    UserExistsValidator,
+    isLoggedGuard
+  ]
+})
+export class LoginModule { }

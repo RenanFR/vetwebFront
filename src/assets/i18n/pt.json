@@ -1,0 +1,21 @@
+{
+    "AUTHENTICATION": {
+        "ENTER": "Clique aqui para entrar na plataforma",
+        "REGISTRATION": "Criar nova conta",
+        "EMAIL": "E-mail do usuário",
+        "USERNAME": "Nome do usuário",
+        "PASSWORD": "Senha",
+        "PASSWORD_CONFIRM": "Confirmação da senha",
+        "REMEMBER": "Relembrar a senha",
+        "FORGOT": "Esqueceu a senha?",
+        "SIGNUP": "Não tem uma conta? Se cadastre clicando aqui",
+        "SOCIAL_LOGIN_ENABLE": "Habilitar login com a conta do google",
+        "2FA_ENABLE": "Habilitar autenticação em dois fatores com o celular",
+        "2FA": "Código 2FA",
+        "TERMS": "Aceitar os termos de uso",
+        "SIGNIN": "Já tem uma conta? Clique aqui para autenticar",
+        "SOCIAL_SIGNIN": "Se cadastrar usando o {{platform}}",
+        "SOCIAL_LOGIN": "Entrar com o {{platform}}"
+        
+    }
+}

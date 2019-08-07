@@ -1,0 +1,14 @@
+<div *ngIf="!isEmptyAlerts(); else emptyNotifications">
+
+    <div *ngFor="let notif of notifications" class="{{ getNotificationStyle(notif) }}" role="alert">
+        {{ notif.message }}
+    </div>
+
+</div>
+<ng-template #emptyNotifications>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>    
+        List of notifications empty
+    </div>
+</ng-template>
+<div (click)="updateView()">{{  testMessage   }}</div>
