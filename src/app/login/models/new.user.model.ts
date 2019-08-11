@@ -1,5 +1,7 @@
 export class NewUserModel {
 
+    id: number;
+
     userMail: string;
 
     userName: string;

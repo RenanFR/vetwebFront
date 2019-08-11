@@ -15,7 +15,45 @@
         "TERMS": "Aceitar os termos de uso",
         "SIGNIN": "Já tem uma conta? Clique aqui para autenticar",
         "SOCIAL_SIGNIN": "Se cadastrar usando o {{platform}}",
-        "SOCIAL_LOGIN": "Entrar com o {{platform}}"
+        "SOCIAL_LOGIN": "Entrar com o {{platform}}",
+        "FORGOT_EMAIL_SENT": "O e-mail de redefinição de senha foi enviado com sucesso, verifique sua caixa de entrada"
         
+    },
+    "FORGOT": {
+        "SUBMIT": "Clique aqui para reenviar a senha",
+        "NEW_PASSWORD": "Nova senha",
+        "NEW_PASSWORD_CONFIRM": "Confirmação da nova senha",
+        "CONFIRM": "Confirmar redefinição",
+        "MINLENGTH": "Respeite o mínimo de caracteres na senha",
+        "MAXLENGTH": "Respeite o máximo de caracteres na senha",
+        "RESETED": "Senha redefinida com sucesso, você já pode autenticar",
+        "EXPIRED_OR_INVALID": "O link de recuperação utilizado é inválido ou já expirou, solicite um novo ou contate o suporte"
+    },
+    "FORMS": {
+        "MESSAGES": {
+            "REQUIRED_USER": "Nome do usuário é obrigatório",
+            "REQUIRED_EMAIL": "Email do usuário é obrigatório",
+            "USER_PASSWORD_SAME": "Usuário e senha não podem ter o mesmo valor",
+            "PASS_CONF_NOT_SAME": "Senha e confirmação não conferem",
+            "PASS_CONF_SAME": "Senha e confirmação batem",
+            "PASS_CONF": "Confirme sua senha",
+            "USER_EXISTS": "Usuário existe",
+            "USER_NOT_EXISTS": "Usuário não existe",
+            "USER_2FA": "Você escolheu usar autenticação em dois fatores, digite o código gerado",
+            "2FA_TOKEN": "Código gerado pelo aplicativo",
+            "INTEGRATION_DISABLE": "Integração de login não habilitada para esse provedor de email",
+            "REQUIRED_PASSWORD": "Senha é obrigatória",
+            "VALID_EMAIL": "Email válido",
+            "INVALID_EMAIL": "Deve prover um e-mail válido",
+            "HAS_VALID_HASH": "Você já solicitou uma redefinição de senha no último dia, favor verificar o e-mail"
+        },
+        "BUTTONS": {
+            "UNDERSTOOD": "Entendido"
+        }
+    },
+    "MODAL": {
+        "LABELS": {
+            "EMAIL_SENT": "Email enviado"
+        }
     }
 }

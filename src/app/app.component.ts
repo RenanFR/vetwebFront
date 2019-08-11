@@ -35,4 +35,8 @@ export class AppComponent implements OnInit {
       .subscribe((dataPropertiesFromRoute) => this.titleHandler.setTitle(dataPropertiesFromRoute.title));
   }
 
+  useLanguage(language: string) {
+    this.translate.use(language);
+  }  
+
 }

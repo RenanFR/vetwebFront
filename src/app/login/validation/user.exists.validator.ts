@@ -2,12 +2,14 @@ import { Injectable } from "@angular/core";
 import { AbstractControl } from "@angular/forms";
 import { debounceTime, switchMap, map, first } from "rxjs/operators";
 import { AuthenticationService } from '../services/authentication.service';
+import { UserService } from '../services/user.service';
 
 @Injectable()
 export class UserExistsValidator {
 
     constructor(
-        private authService: AuthenticationService 
+        private authService: AuthenticationService,
+        private userService: UserService
     ) {}
 
     public checkEmailIsTaken(): Function {
@@ -41,6 +43,17 @@ export class UserExistsValidator {
                 .pipe(map(response => response? {usingTFA: true} : null))
                 .pipe(first());
         };
-    }    
+    }
+
+    public preventRepeatedRequest(): Function {
+        return (control: AbstractControl) => {
+            return control
+                .valueChanges
+                .pipe(debounceTime(300))
+                .pipe(switchMap(emailToCheck => this.userService.checkIfUserHasAlreadyRequestedANewPassword(emailToCheck)))
+                .pipe(map(response => response? {alreadySent: true} : null))
+                .pipe(first());
+        };
+    }
 
 }

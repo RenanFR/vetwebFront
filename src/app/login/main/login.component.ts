@@ -7,18 +7,20 @@ import { NotificationService } from 'src/app/shared/services/notification.servic
 import { userPasswordIsDifferent } from '../validation/user.password.is.different.validation';
 import { UserInfo } from '../models/user.info';
 
+
 @Component({
   selector: 'vetweb-login',
   templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
 
-
   authForm: FormGroup;
     
   @ViewChild('nameInput') nameInput: ElementRef<HTMLInputElement>;
 
   private errorMessage: string = '';
+  private isFacebookSupported: boolean = false;
+  private isTwitterSupported: boolean = false;
 
   constructor(
     private authFormBuilder: FormBuilder,
@@ -50,7 +52,7 @@ export class LoginComponent implements OnInit {
         },
         error => {
           console.log(error.status);
-          this.errorMessage = 'Não foi possível autenticar, verifique suas credencias';
+          this.errorMessage = 'Não foi possível autenticar, verifique seu usuário, senha ou o código 2FA';
           if (this.platformDetector.checkIfItRunningOnBrowser()) {
               this.nameInput.nativeElement.focus();
           }

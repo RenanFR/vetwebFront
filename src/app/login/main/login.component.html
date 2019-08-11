@@ -1,36 +1,36 @@
 <div class="login-content">
     <div class="login-logo">
         <a href="index.html">
-            <img class="align-content" src="assets/images/logo.png" alt="">
+            <img class="align-content" src="assets/images/LogoMakr_VetWeb.png" alt="">
         </a>
     </div>
     <div class="login-form">
         <form [formGroup]="authForm" (submit)="login()">
             <div class="form-group">
                 <label>{{'AUTHENTICATION.EMAIL' | translate}}</label>
-                <input  #nameInput formControlName="email" type="email" class="form-control" placeholder="Email">
+                <input #nameInput formControlName="email" type="email" class="form-control" placeholder="{{'AUTHENTICATION.EMAIL' | translate}}">
 
-                <small *ngIf="(!authForm.get('email').errors?.required && !authForm.get('email').errors?.nonExistentUser && authForm.get('email').touched)" class="text-success">User exists</small>
+                <small *ngIf="(!authForm.get('email').errors?.required && !authForm.get('email').errors?.nonExistentUser && authForm.get('email').touched)" class="text-success">{{'FORMS.MESSAGES.USER_EXISTS' | translate}}</small>
 
-                <vetweb-error *ngIf="(authForm.get('email').errors?.required && authForm.get('email').touched)" errorMessage="User is required!"></vetweb-error>
-                <vetweb-error *ngIf="authForm.get('email').errors?.nonExistentUser" errorMessage="User does not exist!"></vetweb-error>
+                <vetweb-error *ngIf="(authForm.get('email').errors?.required && authForm.get('email').touched)" errorMessage="{{'FORMS.MESSAGES.REQUIRED_USER' | translate}}"></vetweb-error>
+                <vetweb-error *ngIf="authForm.get('email').errors?.nonExistentUser" errorMessage="{{'FORMS.MESSAGES.USER_NOT_EXISTS' | translate}}"></vetweb-error>
 
             </div>
             <div class="form-group">
                 <label>{{'AUTHENTICATION.PASSWORD' | translate}}</label>
-                <input formControlName="password" type="password" class="form-control" placeholder="Password">
+                <input formControlName="password" type="password" class="form-control" placeholder="{{'AUTHENTICATION.PASSWORD' | translate}}">
 
-                <vetweb-error *ngIf="(authForm.get('password').errors?.required && authForm.get('password').touched)" errorMessage="Password is required!"></vetweb-error>
-                <vetweb-error *ngIf="authForm.errors?.wrongCredentials" errorMessage="User and password must not be the same!"></vetweb-error>
+                <vetweb-error *ngIf="(authForm.get('password').errors?.required && authForm.get('password').touched)" errorMessage="{{'FORMS.MESSAGES.REQUIRED_PASSWORD' | translate}}"></vetweb-error>
+                <vetweb-error *ngIf="authForm.errors?.wrongCredentials" errorMessage="{{'FORMS.MESSAGES.USER_PASSWORD_SAME' | translate}}"></vetweb-error>
 
             </div>
             <ng-template [ngIf]="authForm.get('email').errors?.usingTFA && authForm.get('email').touched">
                 <div class="form-group">
 
                 <label>{{'AUTHENTICATION.2FA' | translate}}</label>
-                <input formControlName="authCode" id="inputAuthenticatorToken" type="text" class="form-control" name="authCode" placeholder="Authenticator Generated Token" [required]="authForm.get('email').errors?.usingTFA">	
+                <input formControlName="authCode" id="inputAuthenticatorToken" type="text" class="form-control" name="authCode" placeholder="{{'FORMS.MESSAGES.2FA_TOKEN' | translate}}" [required]="authForm.get('email').errors?.usingTFA">	
           
-                  <vetweb-error *ngIf="(authForm.get('authCode').errors?.required && authForm.get('authCode').touched)" errorMessage="You choose to use two factor authentication, please provide generated token!"></vetweb-error>
+                  <vetweb-error *ngIf="(authForm.get('authCode').errors?.required && authForm.get('authCode').touched)" errorMessage="{{'FORMS.MESSAGES.USER_2FA' | translate}}"></vetweb-error>
           
                 </div>
             </ng-template>            
@@ -39,7 +39,7 @@
                     <input type="checkbox"> {{'AUTHENTICATION.REMEMBER' | translate}}
                 </label>
                 <label class="pull-right">
-                    <a href="#">{{'AUTHENTICATION.FORGOT' | translate}}</a>
+                    <a [routerLink]="['/auth/forget']">{{'AUTHENTICATION.FORGOT' | translate}}</a>
                 </label>
 
             </div>
@@ -52,12 +52,12 @@
                 (authForm.get('email').errors?.usingTFA && authForm.get('authCode').errors?.required))">{{'AUTHENTICATION.ENTER' | translate}}</button>
             <div class="social-login-content">
                 <div class="social-button">
-                    <button type="button" class="btn social facebook btn-flat btn-addon mb-3"><i class="ti-facebook"></i>{{'AUTHENTICATION.SOCIAL_LOGIN' | translate:{'platform':'facebook'} }}</button>
-                    <button type="button" class="btn social twitter btn-flat btn-addon mt-2"><i class="ti-twitter"></i>{{'AUTHENTICATION.SOCIAL_LOGIN' | translate:{'platform':'twitter'} }}</button>
+                    <button type="button" class="btn social facebook btn-flat btn-addon mb-3" [disabled]="!isFacebookSupported"><i class="ti-facebook"></i>{{'AUTHENTICATION.SOCIAL_LOGIN' | translate:{'platform':'facebook'} }}</button>
+                    <button type="button" class="btn social twitter btn-flat btn-addon mt-2" [disabled]="!isTwitterSupported"><i class="ti-twitter"></i>{{'AUTHENTICATION.SOCIAL_LOGIN' | translate:{'platform':'twitter'} }}</button>
                 </div>
             </div>
             <div class="register-link m-t-15 text-center">
-                <p><a href="#"> {{'AUTHENTICATION.SIGNUP' | translate}}</a></p>
+                <p><a [routerLink]="['/auth/register-user']"> {{'AUTHENTICATION.SIGNUP' | translate}}</a></p>
             </div>
         </form>
     </div>

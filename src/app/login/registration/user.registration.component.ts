@@ -14,6 +14,8 @@ export class UserRegistrationComponent implements OnInit {
     newUserForm: FormGroup;
 
     private userToRegister: NewUserModel = new NewUserModel();
+    private isFacebookSupported: boolean = false;
+    private isTwitterSupported: boolean = false;    
     
     constructor(
         private router: Router,

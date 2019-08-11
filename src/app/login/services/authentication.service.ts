@@ -7,7 +7,7 @@ import { GoogleLoginProvider, AuthService } from 'angularx-social-login';
 import { TokenService } from '../../shared/services/token.service';
 import { UserInfo } from '../models/user.info';
 
-const base:string = `${environment.WS_ADDRESS}/login`;
+const base:string = `${environment.WS_ADDRESS}/account`;
 
 @Injectable()
 export class AuthenticationService {
@@ -45,7 +45,7 @@ export class AuthenticationService {
                     .subscribe((gmailUser) => {
                         let token = gmailUser.token;
                         this.tokenService.storeToken(token);
-                        window.location.href = '/categories?redirectAfterAuth=true';
+                        window.location.href = '/dashboard?redirectAfterAuth=true';
                     });
             });
     }

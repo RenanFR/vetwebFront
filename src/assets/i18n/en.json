@@ -1,0 +1,41 @@
+{
+    "AUTHENTICATION": {
+        "ENTER": "Click here to authenticate",
+        "REGISTRATION": "Create new account",
+        "EMAIL": "User email",
+        "USERNAME": "User name",
+        "PASSWORD": "Password",
+        "PASSWORD_CONFIRM": "Password confirmation",
+        "REMEMBER": "Remember password",
+        "FORGOT": "Forgot password?",
+        "SIGNUP": "Don't have an account? Sign up clicking here",
+        "SOCIAL_LOGIN_ENABLE": "Enable google login integration",
+        "2FA_ENABLE": "Enable two factor authentication with your phone",
+        "2FA": "2FA Token",
+        "TERMS": "Agree with user terms and policy",
+        "SIGNIN": "Already have an account? Click here to sign in",
+        "SOCIAL_SIGNIN": "Sign in with {{platform}}",
+        "SOCIAL_LOGIN": "Sign up with {{platform}}"
+        
+    },
+    "FORGOT": {
+        "SUBMIT": "Click here to receive the password"
+    },
+    "FORMS": {
+        "MESSAGES": {
+            "REQUIRED_USER": "User is required!",
+            "REQUIRED_EMAIL": "Email to authenticate is required!",
+            "USER_PASSWORD_SAME": "User and password must not be the same!",
+            "PASS_CONF_NOT_SAME": "Password and confirmation must be equals!",
+            "PASS_CONF_SAME": "Password and confirmation matching",
+            "PASS_CONF": "Confirm your password!",
+            "USER_EXISTS": "User exists",
+            "USER_NOT_EXISTS": "User does not exist!",
+            "USER_2FA": "You choose to use two factor authentication, please provide generated token!",
+            "2FA_TOKEN": "Authenticator Generated Token",
+            "INTEGRATION_DISABLE": "This email provider is not enable to social login integration!",
+            "REQUIRED_PASSWORD": "Password is required!",
+            "VALID_EMAIL": "Valid email"
+        }
+    }
+}

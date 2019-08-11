@@ -16,6 +16,8 @@ import { UserExistsValidator } from './validation/user.exists.validator';
 import { UserRegistrationComponent } from './registration/user.registration.component';
 import { isLoggedGuard } from './utilities/is.logged.guard';
 import { TranslateModule } from '@ngx-translate/core';
+import { ForgetPasswordComponent } from './forget/forget.password.component';
+import { ResetPasswordComponent } from './forget/reset.password.component';
 
 @NgModule({
   imports: [
@@ -32,12 +34,16 @@ import { TranslateModule } from '@ngx-translate/core';
   declarations: [
     AuthBaseComponent,
     LoginComponent,
-    UserRegistrationComponent
+    UserRegistrationComponent,
+    ForgetPasswordComponent,
+    ResetPasswordComponent
   ],
   exports: [
     AuthBaseComponent,
     LoginComponent,
-    UserRegistrationComponent
+    UserRegistrationComponent,
+    ForgetPasswordComponent,
+    ResetPasswordComponent
   ],
   providers: [
     AuthenticationService,

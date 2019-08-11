@@ -4,6 +4,8 @@ import { AuthBaseComponent } from './layout/auth.base.component';
 import { LoginComponent } from './main/login.component';
 import { EnableToLogin } from './utilities/enable.to.login';
 import { UserRegistrationComponent } from './registration/user.registration.component';
+import { ForgetPasswordComponent } from './forget/forget.password.component';
+import { ResetPasswordComponent } from './forget/reset.password.component';
 
 const routes: Routes = [
   {
@@ -21,6 +23,14 @@ const routes: Routes = [
       {
         path: 'register-user', 
         component: UserRegistrationComponent
+      },
+      {
+        path: 'forget', 
+        component: ForgetPasswordComponent
+      },
+      {
+        path: 'reset/:recoveryHash', 
+        component: ResetPasswordComponent
       }
     ]
   }
