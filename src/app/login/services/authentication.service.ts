@@ -8,6 +8,7 @@ import { TokenService } from '../../shared/services/token.service';
 import { UserInfo } from '../models/user.info';
 
 const base:string = `${environment.WS_ADDRESS}/account`;
+const baseLogin:string = `${environment.WS_ADDRESS}/login`;
 
 @Injectable()
 export class AuthenticationService {
@@ -24,7 +25,7 @@ export class AuthenticationService {
         let authCode: string = user.authCode;
         return this
             .http
-            .post(base, { email, password, authCode }, { observe: 'response' })
+            .post(baseLogin, { email, password, authCode }, { observe: 'response' })
             .pipe(tap(response => {
                 let token: string = response.headers.get('Authorization');
                 this.tokenService.storeToken(token);
