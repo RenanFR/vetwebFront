@@ -41,7 +41,7 @@ export class UserRegistrationComponent implements OnInit {
     private onSave(): void {
         this.userToRegister = this.newUserForm.getRawValue() as NewUserModel;
         this.service.signUpUser(this.userToRegister).subscribe((responseText) => {
-            this.router.navigate(['/barcode', responseText]);
+            this.router.navigate(['/auth/login', responseText]);
         },
         (shitHappened) => {
             console.log(shitHappened);

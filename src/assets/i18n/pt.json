@@ -45,15 +45,26 @@
             "REQUIRED_PASSWORD": "Senha é obrigatória",
             "VALID_EMAIL": "Email válido",
             "INVALID_EMAIL": "Deve prover um e-mail válido",
-            "HAS_VALID_HASH": "Você já solicitou uma redefinição de senha no último dia, favor verificar o e-mail"
+            "HAS_VALID_HASH": "Você já solicitou uma redefinição de senha no último dia, favor verificar o e-mail",
+            "SPECIES_FORM": "Cadastro de espécie",
+            "FORM": "Formulário"
         },
         "BUTTONS": {
             "UNDERSTOOD": "Entendido"
+        },
+        "FIELDS": {
+            "DESCRIPTION": "Descrição"
         }
     },
     "MODAL": {
         "LABELS": {
             "EMAIL_SENT": "Email enviado"
+        }
+    },
+    "ANIMALS": {
+        "SPECIES": {
+            "SAVE": "Criar nova espécie",
+            "DESCRIPTION": "Informe o nome da espécie"
         }
     }
 }

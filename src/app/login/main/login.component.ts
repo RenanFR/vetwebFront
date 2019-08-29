@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthenticationService } from '../services/authentication.service';
 import { PlatformRuntimeDetectorService } from 'src/app/shared/services/platform.runtime.detector.service';
 import { UserExistsValidator } from '../validation/user.exists.validator';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { userPasswordIsDifferent } from '../validation/user.password.is.different.validation';
 import { UserInfo } from '../models/user.info';
+import { AuthenticationService } from '../services/authentication.service';
 
 
 @Component({

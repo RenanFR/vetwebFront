@@ -14,6 +14,10 @@ const routes: Routes = [
   { 
     path: 'dashboard',
     loadChildren: './home/home.module#HomeModule'
+  },
+  { 
+    path: 'animals/species/new',
+    loadChildren: './animal/animal.module#AnimalModule'
   }
 ];
 

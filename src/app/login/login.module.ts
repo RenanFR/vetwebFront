@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { AuthBaseComponent } from './layout/auth.base.component';
 import { LoginComponent } from './main/login.component';
 import { LoginRoutingModule } from './login-routing.module';
-import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,6 +17,7 @@ import { isLoggedGuard } from './utilities/is.logged.guard';
 import { TranslateModule } from '@ngx-translate/core';
 import { ForgetPasswordComponent } from './forget/forget.password.component';
 import { ResetPasswordComponent } from './forget/reset.password.component';
+import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
   imports: [

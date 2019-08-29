@@ -9,6 +9,7 @@ import { LoginModule } from './login/login.module';
 import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { AnimalModule } from './animal/animal.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
 
@@ -25,6 +26,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     HomeModule,
     LoginModule,
+    AnimalModule,
     AppRoutingModule,
     TranslateModule.forRoot({
         loader: {
