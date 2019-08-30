@@ -18,6 +18,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ForgetPasswordComponent } from './forget/forget.password.component';
 import { ResetPasswordComponent } from './forget/reset.password.component';
 import { AuthenticationService } from './services/authentication.service';
+import { LayoutModule } from '../layout/layout.module';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { AuthenticationService } from './services/authentication.service';
     LoginRoutingModule,
     HttpClientModule,
     SocialLoginModule,
-    TranslateModule
+    TranslateModule,
+    LayoutModule
   ],
   declarations: [
     AuthBaseComponent,

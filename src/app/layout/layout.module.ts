@@ -11,11 +11,14 @@ import { LiveChatComponent } from './chat/live.chat.component';
 import { DeprecatedMarkupComponent } from './others/deprecated.markup.component';
 import { LayoutComponent } from './main/layout.component';
 import { RouterModule } from '@angular/router';
+import { ModalComponent } from './modal/modal.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    TranslateModule
   ],
   declarations: [
     LeftPanelComponent,
@@ -27,7 +30,8 @@ import { RouterModule } from '@angular/router';
     ToDoListComponent,
     LiveChatComponent,
     DeprecatedMarkupComponent,
-    LayoutComponent
+    LayoutComponent,
+    ModalComponent
   ],
   exports: [
     LeftPanelComponent,
@@ -39,7 +43,8 @@ import { RouterModule } from '@angular/router';
     ToDoListComponent,
     LiveChatComponent,
     DeprecatedMarkupComponent,
-    LayoutComponent
+    LayoutComponent,
+    ModalComponent
   ],
   providers: []
 })

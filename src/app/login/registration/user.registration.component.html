@@ -58,7 +58,8 @@
 
             <div class="checkbox">
                 <label>
-                    <input type="checkbox"> {{'AUTHENTICATION.TERMS' | translate}}
+                    <input formControlName="termsAcceptance"type="checkbox"> {{'AUTHENTICATION.TERMS' | translate}}
+                    <vetweb-error *ngIf="newUserForm.hasError('required', 'termsAcceptance')" errorMessage="{{'FORMS.MESSAGES.TERMS_ACCEPTANCE' | translate}}"></vetweb-error>
                 </label>
             </div>
             <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30" [disabled]="newUserForm.invalid || newUserForm.pending">{{'AUTHENTICATION.REGISTRATION' | translate}}</button>
@@ -72,4 +73,5 @@
                 <p><a [routerLink]="['/auth/login']">{{'AUTHENTICATION.SIGNIN' | translate}}</a></p>
             </div>
         </form>
+        <vetweb-modal title="Usuário cadastrado com sucesso" message="Seu usuário foi incluído com sucesso, caso tenha habilitado autenticação em dois fatores irá receber no e-mail QR Code para escanear, do contrário já pode autenticar" #modalSuccesso></vetweb-modal>
     </div>

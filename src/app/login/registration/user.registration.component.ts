@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { NewUserModel } from '../models/new.user.model';
 import { UserExistsValidator } from '../validation/user.exists.validator';
 import { UserService } from '../services/user.service';
 import { verifyPasswordConfirmationMatching } from '../validation/password.and.confirmation.dont.match';
 import { Router } from '@angular/router';
+import { ModalComponent } from 'src/app/layout/modal/modal.component';
 
 @Component({
     templateUrl: './user.registration.component.html'
@@ -12,6 +13,8 @@ import { Router } from '@angular/router';
 export class UserRegistrationComponent implements OnInit {
     
     newUserForm: FormGroup;
+
+    @ViewChild('modalSuccesso') modal: ModalComponent;
 
     private userToRegister: NewUserModel = new NewUserModel();
     private isFacebookSupported: boolean = false;
@@ -32,6 +35,7 @@ export class UserRegistrationComponent implements OnInit {
             password: [ '', [] ],
             passwordConfirmation: [ '', [] ],
             useTwoFactorAuth: [ false, [] ],
+            termsAcceptance: [ false, [ Validators.requiredTrue ] ],
             isSocialLogin: [ false, [] ],
         }, {
             validator: verifyPasswordConfirmationMatching
@@ -41,7 +45,8 @@ export class UserRegistrationComponent implements OnInit {
     private onSave(): void {
         this.userToRegister = this.newUserForm.getRawValue() as NewUserModel;
         this.service.signUpUser(this.userToRegister).subscribe((responseText) => {
-            this.router.navigate(['/auth/login', responseText]);
+            this.modal.open();
+            //this.router.navigate(['/auth/login']);
         },
         (shitHappened) => {
             console.log(shitHappened);

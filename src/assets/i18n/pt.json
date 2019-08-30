@@ -47,7 +47,8 @@
             "INVALID_EMAIL": "Deve prover um e-mail válido",
             "HAS_VALID_HASH": "Você já solicitou uma redefinição de senha no último dia, favor verificar o e-mail",
             "SPECIES_FORM": "Cadastro de espécie",
-            "FORM": "Formulário"
+            "FORM": "Formulário",
+            "TERMS_ACCEPTANCE": "Você deve aceitar os termos de uso antes de prosseguir"
         },
         "BUTTONS": {
             "UNDERSTOOD": "Entendido"
