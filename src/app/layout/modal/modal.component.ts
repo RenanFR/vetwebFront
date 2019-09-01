@@ -10,7 +10,9 @@ export class ModalComponent {
 
   @Input() message: string;
 
-  @ViewChild('modalSuccess') modalButton: ElementRef<HTMLButtonElement>;
+  @Input() typeAlert: string;
+
+  @ViewChild('modal') modalButton: ElementRef<HTMLButtonElement>;
 
   public open(): void {
     this.modalButton.nativeElement.click();

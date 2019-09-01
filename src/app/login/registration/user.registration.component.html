@@ -73,5 +73,10 @@
                 <p><a [routerLink]="['/auth/login']">{{'AUTHENTICATION.SIGNIN' | translate}}</a></p>
             </div>
         </form>
-        <vetweb-modal title="Usuário cadastrado com sucesso" message="Seu usuário foi incluído com sucesso, caso tenha habilitado autenticação em dois fatores irá receber no e-mail QR Code para escanear, do contrário já pode autenticar" #modalSuccesso></vetweb-modal>
+        
+        <div id="successMessageLabel" style="display: none;">{{'FORMS.MESSAGES.USER_SUCCESS' | translate}}</div>
+        <div id="successMessageText" style="display: none;">{{'FORMS.MESSAGES.USER_SUCCESS_MESSAGE' | translate}}</div>
+        <div id="errorMessageLabel" style="display: none;">{{'MODAL.LABELS.ERROR' | translate}}</div>
+        <div id="errorMessageText" style="display: none;">{{'FORMS.MESSAGES.USER_ERROR_MESSAGE' | translate}}</div>
+        
     </div>

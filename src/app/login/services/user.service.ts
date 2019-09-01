@@ -17,7 +17,7 @@ export class UserService {
     }
 
     public sendForgetEmail(email: string): Observable<string> {
-        return this.http.post(`${base}/forget`, email, { responseType: 'text' });
+        return this.http.post<string>(`${base}/forget`, email);
     }
 
     public checkIfUserHasAlreadyRequestedANewPassword(email: string): Observable<Boolean> {

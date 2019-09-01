@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { UserExistsValidator } from '../validation/user.exists.validator';
 import { UserService } from '../services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UserInfo } from '../models/user.info';
 import { NewUserModel } from '../models/new.user.model';
 import { verifyNewPasswordConfirmationMatching } from '../validation/password.and.confirmation.dont.match';
+import { ModalComponent } from 'src/app/layout/modal/modal.component';
 
 @Component({
     templateUrl: './reset.password.component.html'
@@ -22,7 +21,7 @@ export class ResetPasswordComponent implements OnInit {
 
     expiredOrInvalid: boolean = false;
     
-    @ViewChild('modalSuccess') modalButton: ElementRef<HTMLButtonElement>;
+    @ViewChild('vetwebModal') modal: ModalComponent;
     
     constructor(
         private resetPassFormBuilder: FormBuilder,
@@ -57,8 +56,7 @@ export class ResetPasswordComponent implements OnInit {
     private onConfirm(): void {
         this.service.updateUser(this.user).subscribe((responseText) => {
             this.confirmed = true;
-            console.log(this.user);
-            this.modalButton.nativeElement.click();
+            this.modal.open();
         },
         (shitHappened) => {
             console.log(shitHappened);

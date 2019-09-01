@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AbstractControl } from "@angular/forms";
-import { debounceTime, switchMap, map, first } from "rxjs/operators";
+import { debounceTime, switchMap, map, first, tap } from "rxjs/operators";
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
 
@@ -18,6 +18,7 @@ export class UserExistsValidator {
                 .valueChanges
                 .pipe(debounceTime(300))
                 .pipe(switchMap(userInput => this.authService.checkNameIsTaken(userInput)))
+                .pipe(tap(response => console.log(response? 'Usuário existe' : 'Usuário não existe')))
                 .pipe(map(response => !response? {nonExistentUser: true} : null))
                 .pipe(first());
         };

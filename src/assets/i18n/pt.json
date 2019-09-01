@@ -16,7 +16,8 @@
         "SIGNIN": "Já tem uma conta? Clique aqui para autenticar",
         "SOCIAL_SIGNIN": "Se cadastrar usando o {{platform}}",
         "SOCIAL_LOGIN": "Entrar com o {{platform}}",
-        "FORGOT_EMAIL_SENT": "O e-mail de redefinição de senha foi enviado com sucesso, verifique sua caixa de entrada"
+        "FORGOT_EMAIL_SENT": "O e-mail de redefinição de senha foi enviado com sucesso, verifique sua caixa de entrada",
+        "FORGOT_EMAILL_NOT_SENT": "Não foi possível enviar o e-mail de redefinição, contate o suporte para receber auxílio"
         
     },
     "FORGOT": {
@@ -27,7 +28,8 @@
         "MINLENGTH": "Respeite o mínimo de caracteres na senha",
         "MAXLENGTH": "Respeite o máximo de caracteres na senha",
         "RESETED": "Senha redefinida com sucesso, você já pode autenticar",
-        "EXPIRED_OR_INVALID": "O link de recuperação utilizado é inválido ou já expirou, solicite um novo ou contate o suporte"
+        "EXPIRED_OR_INVALID": "O link de recuperação utilizado é inválido ou já expirou, solicite um novo ou contate o suporte",
+        "NOT_RESETED": "Não foi possível trocar sua senha, contato o suporte"
     },
     "FORMS": {
         "MESSAGES": {
@@ -48,7 +50,10 @@
             "HAS_VALID_HASH": "Você já solicitou uma redefinição de senha no último dia, favor verificar o e-mail",
             "SPECIES_FORM": "Cadastro de espécie",
             "FORM": "Formulário",
-            "TERMS_ACCEPTANCE": "Você deve aceitar os termos de uso antes de prosseguir"
+            "TERMS_ACCEPTANCE": "Você deve aceitar os termos de uso antes de prosseguir",
+            "USER_SUCCESS": "Usuário cadastrado com sucesso",
+            "USER_SUCCESS_MESSAGE": "Seu usuário foi incluído com sucesso, caso tenha habilitado autenticação em dois fatores irá receber no e-mail QR Code para escanear, do contrário já pode autenticar",
+            "USER_ERROR_MESSAGE": "Verifique os dados de cadastro, não foi possível incluir sua conta"
         },
         "BUTTONS": {
             "UNDERSTOOD": "Entendido"
@@ -59,7 +64,10 @@
     },
     "MODAL": {
         "LABELS": {
-            "EMAIL_SENT": "Email enviado"
+            "EMAIL_SENT": "Email enviado",
+            "EMAIL_NOT_SENT": "Não foi possível enviar o email",
+            "SUCCESS": "Concluído",
+            "ERROR": "Erro na operação"
         }
     },
     "ANIMALS": {

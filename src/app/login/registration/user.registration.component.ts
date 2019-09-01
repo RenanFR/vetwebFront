@@ -5,7 +5,7 @@ import { UserExistsValidator } from '../validation/user.exists.validator';
 import { UserService } from '../services/user.service';
 import { verifyPasswordConfirmationMatching } from '../validation/password.and.confirmation.dont.match';
 import { Router } from '@angular/router';
-import { ModalComponent } from 'src/app/layout/modal/modal.component';
+import Swal from 'sweetalert2'
 
 @Component({
     templateUrl: './user.registration.component.html'
@@ -13,8 +13,6 @@ import { ModalComponent } from 'src/app/layout/modal/modal.component';
 export class UserRegistrationComponent implements OnInit {
     
     newUserForm: FormGroup;
-
-    @ViewChild('modalSuccesso') modal: ModalComponent;
 
     private userToRegister: NewUserModel = new NewUserModel();
     private isFacebookSupported: boolean = false;
@@ -45,11 +43,14 @@ export class UserRegistrationComponent implements OnInit {
     private onSave(): void {
         this.userToRegister = this.newUserForm.getRawValue() as NewUserModel;
         this.service.signUpUser(this.userToRegister).subscribe((responseText) => {
-            this.modal.open();
-            //this.router.navigate(['/auth/login']);
+            Swal.fire(document.getElementById('successMessageLabel').innerText,
+            document.getElementById('successMessageText').innerText,
+            'success');
         },
         (shitHappened) => {
-            console.log(shitHappened);
+            Swal.fire(document.getElementById('errorMessageLabel').innerText,
+            document.getElementById('errorMessageText').innerText,
+            'error');
         });
     }
     
