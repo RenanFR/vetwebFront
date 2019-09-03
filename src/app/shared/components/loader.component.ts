@@ -4,13 +4,14 @@ import { ProgressLoaderService } from "../services/progress.loader.service";
 import { map } from "rxjs/operators";
 
 @Component({
-    selector: 'opinionated-loader',
+    selector: 'vetweb-loader',
     templateUrl: '../templates/loader.component.html',
     styleUrls: ['../styles/loader.component.css']
 })
 export class LoaderComponent implements OnInit {
     
     loader$: Observable<string>;
+    progress$: Observable<number>;
     
     constructor(
         private progressLoaderService: ProgressLoaderService
@@ -18,5 +19,6 @@ export class LoaderComponent implements OnInit {
         
     ngOnInit(): void {
         this.loader$ = this.progressLoaderService.loading().pipe(map((loadType) => loadType.valueOf()));
+        this.progress$ = this.progressLoaderService.progress();
     }
 }

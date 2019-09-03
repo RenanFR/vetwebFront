@@ -1,1 +1,10 @@
-<hr [ngClass]="loader$ | async">
+<div class="progress mb-2">
+        <div 
+            [ngClass]="{'progress-bar bg-success' : true, 'loading' : (loader$ | async) === 'loading', 'stopped' : (loader$ | async) === 'stopped'}" 
+            role="progressbar" 
+            [ngStyle]="{'width': (progress$ | async) + '%'}" 
+            aria-valuenow="{(progress$ | async)}" 
+            aria-valuemin="0" 
+            aria-valuemax="100">
+        </div>
+</div>

@@ -11,6 +11,8 @@ import { SharedModule } from '../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientModule } from '@angular/common/http';
 import { SpeciesService } from './services/species.service';
+import { SpeciesDetailsComponent } from './species/species.details.component';
+import { SpeciesListComponent } from './species/species.list.component';
 
 @NgModule({
   imports: [
@@ -27,11 +29,15 @@ import { SpeciesService } from './services/species.service';
   ],
   declarations: [
     AnimalBaseComponent,
-    SpeciesRegistrationComponent
+    SpeciesRegistrationComponent,
+    SpeciesDetailsComponent,
+    SpeciesListComponent
   ],
   exports: [
     AnimalBaseComponent,
-    SpeciesRegistrationComponent
+    SpeciesRegistrationComponent,
+    SpeciesDetailsComponent,
+    SpeciesListComponent
   ],
   providers: [
     SpeciesService

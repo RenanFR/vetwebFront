@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { isLoggedGuard } from '../login/utilities/is.logged.guard';
 import { SpeciesRegistrationComponent } from './species/species.registration.component';
 import { AnimalBaseComponent } from './animal.base.component';
+import { SpeciesDetailsComponent } from './species/species.details.component';
+import { SpeciesListComponent } from './species/species.list.component';
 
 const routes: Routes = [
   {
@@ -16,7 +18,15 @@ const routes: Routes = [
         {
           path: 'species/new', 
           component: SpeciesRegistrationComponent
-        }
+        },
+        {
+          path: 'species/:speciesId', 
+          component: SpeciesDetailsComponent
+        },
+        {
+          path: 'species', 
+          component: SpeciesListComponent
+        }                
       ]
   }
 ];

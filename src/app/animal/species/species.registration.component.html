@@ -1,24 +1,28 @@
-<div class="col-lg-6">
-    <div class="card">
-        <div class="card-header"><strong>{{'FORMS.MESSAGES.SPECIES_FORM' | translate}}</strong><small> {{'FORMS.MESSAGES.FORM' | translate}}</small></div>
-        <div class="card-body card-block">
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><strong>{{'FORMS.MESSAGES.SPECIES_FORM' | translate}}</strong><small> {{'FORMS.MESSAGES.FORM' | translate}}</small></div>
+            <div class="card-body card-block">
 
-            <form [formGroup]="speciesForm" (submit)="onCreate()">
+                <form [formGroup]="speciesForm" (submit)="onCreate()">
 
-                <div class="form-group">
+                    <div class="form-group">
 
-                    <label for="species" class=" form-control-label">{{'FORMS.FIELDS.DESCRIPTION' | translate}}</label>
-                    
-                    <input formControlName="speciesDescription" type="text" id="species" placeholder="{{'ANIMALS.SPECIES.DESCRIPTION' | translate}}" class="form-control">
+                        <label for="species" class=" form-control-label">{{'FORMS.FIELDS.DESCRIPTION' | translate}}</label>
+                        
+                        <input formControlName="speciesDescription" type="text" id="species" placeholder="{{'ANIMALS.SPECIES.DESCRIPTION' | translate}}" class="form-control">
 
-                </div>
+                    </div>
 
-                <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
-                        <i class="fa fa-floppy-o fa-lg"></i>&nbsp;
-                        <span id="payment-button-amount">{{'ANIMALS.SPECIES.SAVE' | translate}}</span>
-                        <span id="payment-button-sending" style="display:none;">Sending…</span>
-                </button>                
-            </form>
+                    <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                            <i class="fa fa-floppy-o fa-lg"></i>&nbsp;
+                            <span id="payment-button-amount">{{'ANIMALS.SPECIES.SAVE' | translate}}</span>
+                            <span id="payment-button-sending" style="display:none;">Sending…</span>
+                    </button>
+
+                </form>
+
+            </div>
 
         </div>
     </div>

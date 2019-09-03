@@ -13,12 +13,14 @@ import { LayoutComponent } from './main/layout.component';
 import { RouterModule } from '@angular/router';
 import { ModalComponent } from './modal/modal.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    TranslateModule
+    TranslateModule,
+    SharedModule
   ],
   declarations: [
     LeftPanelComponent,

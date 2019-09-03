@@ -56,7 +56,9 @@
             "USER_ERROR_MESSAGE": "Verifique os dados de cadastro, não foi possível incluir sua conta"
         },
         "BUTTONS": {
-            "UNDERSTOOD": "Entendido"
+            "UNDERSTOOD": "Entendido",
+            "DETAILS": "Detalhes",
+            "REMOVE": "Excluir"
         },
         "FIELDS": {
             "DESCRIPTION": "Descrição"
@@ -73,7 +75,18 @@
     "ANIMALS": {
         "SPECIES": {
             "SAVE": "Criar nova espécie",
-            "DESCRIPTION": "Informe o nome da espécie"
+            "DESCRIPTION": "Informe o nome da espécie",
+            "SPECIES": "Espécie {{species}}",
+            "ANIMALSOF": "Animais dessa espécie",
+            "LIST": "Lista de espécies cadastradas",
+            "ID": "Sequência",
+            "NAME": "Descrição"
+        }
+    },
+    "LAYOUT": {
+        "MENU": {
+            "SPECIES": "Gerenciar espécies",
+            "MENU": "Menu de opções"
         }
     }
 }

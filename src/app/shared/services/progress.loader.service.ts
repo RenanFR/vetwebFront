@@ -6,18 +6,27 @@ import { LoadingType } from '../models/loading.type';
 @Injectable()
 export class ProgressLoaderService {
 
-    private subjectLoader = new Subject<LoadingType>();
+    private switchLoader = new Subject<LoadingType>();
+    private progressUpdate = new Subject<number>();
 
     public loading(): Observable<LoadingType> {
-        return this.subjectLoader.asObservable().pipe(startWith(LoadingType.STOP));
+        return this.switchLoader.asObservable().pipe(startWith(LoadingType.STOP));
+    }
+
+    public progress(): Observable<number> {
+        return this.progressUpdate.asObservable();
     }
 
     public start(): void {
-        this.subjectLoader.next(LoadingType.START);
+        this.switchLoader.next(LoadingType.START);
+    }
+
+    public increment(by: number): void {
+        this.progressUpdate.next(by);
     }
 
     public stop(): void {
-        this.subjectLoader.next(LoadingType.STOP);
+        this.switchLoader.next(LoadingType.STOP);
     }
 
 }

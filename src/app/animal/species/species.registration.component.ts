@@ -10,7 +10,7 @@ import { Species } from '../models/species';
 export class SpeciesRegistrationComponent implements OnInit {
     
     speciesForm: FormGroup;
-    species: Species = new Species();;
+    species: Species = new Species();
     
     constructor(
         private router: Router,
@@ -26,9 +26,9 @@ export class SpeciesRegistrationComponent implements OnInit {
 
     private onCreate(): void {
         this.species.description = this.speciesForm.get('speciesDescription').value;
-        console.log(this.species);
-        this.service.createSpecies(this.species).subscribe((response) => {
-            console.log(response);
+        this.service.createSpecies(this.species)   
+        .subscribe((responseSpecies) => {
+            this.router.navigate(['/animals/species', responseSpecies.id]);
         },
         (shitHappened) => {
             console.log(shitHappened);
