@@ -53,7 +53,8 @@
             "TERMS_ACCEPTANCE": "Você deve aceitar os termos de uso antes de prosseguir",
             "USER_SUCCESS": "Usuário cadastrado com sucesso",
             "USER_SUCCESS_MESSAGE": "Seu usuário foi incluído com sucesso, caso tenha habilitado autenticação em dois fatores irá receber no e-mail QR Code para escanear, do contrário já pode autenticar",
-            "USER_ERROR_MESSAGE": "Verifique os dados de cadastro, não foi possível incluir sua conta"
+            "USER_ERROR_MESSAGE": "Verifique os dados de cadastro, não foi possível incluir sua conta",
+            "OWNER_FORM": "Cadastro de proprietários"
         },
         "BUTTONS": {
             "UNDERSTOOD": "Entendido",

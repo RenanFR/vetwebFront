@@ -7,8 +7,8 @@ import { GoogleLoginProvider, AuthService } from 'angularx-social-login';
 import { TokenService } from '../../shared/services/token.service';
 import { UserInfo } from '../models/user.info';
 
-const base:string = `${environment.WS_ADDRESS}/account`;
-const baseLogin:string = `${environment.WS_ADDRESS}/login`;
+const base: string = `${environment.WS_ADDRESS}/account`;
+const baseLogin: string = `${environment.WS_ADDRESS}/login`;
 
 @Injectable()
 export class AuthenticationService {

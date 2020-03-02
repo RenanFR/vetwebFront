@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  WS_ADDRESS: '/vetweb/api'
+  WS_ADDRESS: 'vetweb/api'
 };
 
 /*

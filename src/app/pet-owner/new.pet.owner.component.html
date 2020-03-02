@@ -1,0 +1,104 @@
+<div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header"><strong>{{'FORMS.MESSAGES.OWNER_FORM' | translate}}</strong><small> {{'FORMS.MESSAGES.FORM' | translate}}</small></div>
+                <div class="card-body card-block">
+    
+                    <form [formGroup]="ownersForm" (submit)="onCreate()">
+    
+                        <div class="form-group">
+
+                            <label for="nome" class=" form-control-label">Primeiro nome</label>
+                        
+                            <input formControlName="nome" type="text" id="nome" placeholder="" class="form-control">
+                            
+                            <label for="sobrenome" class=" form-control-label">Sobrenome</label>
+                        
+                            <input formControlName="sobrenome" type="text" id="sobrenome" placeholder="" class="form-control">                                
+    
+                            <label for="cpf" class=" form-control-label">CPF</label>
+                            
+                            <input formControlName="cpf" type="text" id="cpf" placeholder="Ex.: 000.000.000-00" class="form-control" mask="000.000.000-00">
+
+                            <vetweb-error *ngIf="(ownersForm.get('cpf').errors?.cpfvalidator && ownersForm.get('cpf').touched)" errorMessage="Esse cpf é inválido"></vetweb-error>
+
+                            <label for="cep" class=" form-control-label">CEP</label>
+
+                            <input formControlName="cep" type="text" id="cep" placeholder="" class="form-control" mask="000.00-000" (blur)="fillAddress($event.target.value)">
+                            
+                            <vetweb-error *ngIf="(ownersForm.get('cep').errors?.invalidCep && ownersForm.get('cep').touched)" errorMessage="Cep informado não se refere a nenhum endereço"></vetweb-error>
+
+                            <label for="numero" class=" form-control-label">Número</label>
+                            
+                            <input formControlName="numero" type="text" id="numero" placeholder="" class="form-control">                                                                                    
+
+                            <label for="logradouro" class=" form-control-label">Logradouro</label>
+
+                            <input formControlName="logradouro" type="text" id="logradouro" placeholder="" class="form-control">                            
+                            
+                            <label for="bairro" class=" form-control-label">Bairro</label>
+                            
+                            <input formControlName="bairro" type="text" id="bairro" placeholder="" class="form-control">                            
+                            
+                            <label for="cidade" class=" form-control-label">Cidade</label>
+                            
+                            <input formControlName="cidade" type="text" id="cidade" placeholder="" class="form-control">                            
+                            
+                            <label for="uf" class=" form-control-label">UF</label>
+                            
+                            <input formControlName="uf" type="text" id="uf" placeholder="" class="form-control">                            
+                            
+                            <label for="telefone" class=" form-control-label">Telefone</label>
+                            
+                            <input formControlName="telefone" type="text" id="telefone" placeholder="" class="form-control" mask="(00)0000-0000">
+
+                            <label for="email" class=" form-control-label">Email</label>
+                            
+                            <input formControlName="email" type="email" id="email" placeholder="" class="form-control">                                                        
+
+                            <label for="celular" class=" form-control-label">Celular</label>
+
+                            <input formControlName="celular" type="text" id="celular" placeholder="" class="form-control" mask="(00)00000-0000">
+                            
+                            <label for="nascimento" class=" form-control-label">Nascimento</label>
+                            
+                            <input formControlName="nascimento" type="text" id="nascimento" placeholder="" class="form-control" mask="00/00/0000">                            
+                            
+                            <label for="genero" class=" form-control-label">Gênero</label>
+                            <br/>
+                            
+                            <input formControlName="genero" type="radio" id="ativo" placeholder="" value="masculino" name="genero">
+                            <label for="masculino" class=" form-control-label">Masculino</label>
+                            
+                            <input formControlName="genero" type="radio" id="feminino" placeholder="" value="feminino" name="genero">
+                            <label for="feminino" class=" form-control-label">Feminino</label>
+                            
+                            <br/>
+                            <label for="profissao" class=" form-control-label">Profissão</label>
+                            
+                            <input formControlName="profissao" type="text" id="profissao" placeholder="" class="form-control">                            
+                            
+                            
+                            <label class="label label-default">Status</label>
+                            <br/>
+                            <input formControlName="status" type="radio" id="ativo" placeholder="" value="true" name="status">
+                            <label for="ativo" class=" form-control-label">Ativo</label>
+                            
+                            <input formControlName="status" type="radio" id="inativo" placeholder="" value="false" name="status">
+                            <label for="inativo" class=" form-control-label">Inativo</label>
+
+                        </div>
+    
+                        <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                <i class="fa fa-floppy-o fa-lg"></i>&nbsp;
+                                <span id="payment-button-amount">Salvar proprietário</span>
+                                <span id="payment-button-sending" style="display:none;">Sending…</span>
+                        </button>
+    
+                    </form>
+    
+                </div>
+    
+            </div>
+        </div>
+    </div>

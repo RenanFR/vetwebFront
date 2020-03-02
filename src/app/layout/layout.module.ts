@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { ModalComponent } from './modal/modal.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../shared/shared.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { SharedModule } from '../shared/shared.module';
     LiveChatComponent,
     DeprecatedMarkupComponent,
     LayoutComponent,
-    ModalComponent
+    ModalComponent,
+    NotFoundComponent
   ],
   exports: [
     LeftPanelComponent,
@@ -46,7 +48,8 @@ import { SharedModule } from '../shared/shared.module';
     LiveChatComponent,
     DeprecatedMarkupComponent,
     LayoutComponent,
-    ModalComponent
+    ModalComponent,
+    NotFoundComponent
   ],
   providers: []
 })

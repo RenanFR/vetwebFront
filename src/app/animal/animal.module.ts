@@ -13,7 +13,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { SpeciesService } from './services/species.service';
 import { SpeciesDetailsComponent } from './species/species.details.component';
 import { SpeciesListComponent } from './species/species.list.component';
-import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   imports: [
@@ -26,8 +25,7 @@ import { DataTablesModule } from 'angular-datatables';
     ReactiveFormsModule,
     HttpClientModule,
     AnimalRoutingModule,
-    TranslateModule,
-    DataTablesModule
+    TranslateModule
   ],
   declarations: [
     AnimalBaseComponent,
