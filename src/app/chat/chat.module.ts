@@ -8,6 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ChatComponent } from './chat.component';
 import { ChatRoutingModule } from './chat-routing.module';
+import { ContactsComponent } from './contacts/contacts.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { ChatRoutingModule } from './chat-routing.module';
     TranslateModule,
   ],
   declarations: [
-    ChatComponent
+    ChatComponent,
+    ContactsComponent
   ],
   exports: [
     ChatComponent

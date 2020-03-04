@@ -1,5 +1,7 @@
 export interface UserToken {
 
+    id: number;
+
     sub: string;
 
     userEmail: string;

@@ -1,3 +1,38 @@
 <vetweb-layout>
+    
+    <div class="container">
+        <h3 class=" text-center">Chat</h3>
+        <div class="messaging">
+              <div class="inbox_msg">
+
+                <vetweb-contacts [contacts]="contacts">
+                </vetweb-contacts>
+
+                <div class="mesgs">
+                  <div class="msg_history">
+
+                    <div *ngFor="let msg of messages" [ngClass]="{'incoming_msg': msg.type === 'SENT'}">
+                      <div *ngIf="msg.type === 'RECEIVED'" class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                      <div [ngClass]="{'received_msg': msg.type === 'RECEIVED', 'outgoing_msg': msg.type === 'SENT'}">
+                        <div [ngClass]="{'received_withd_msg': msg.type === 'RECEIVED', 'sent_msg': msg.type === 'SENT'}">
+                          <p>{{ msg.text }}</p>
+                          <span class="time_date"> {{ msg.sentAt }}</span></div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="type_msg">
+                    <div class="input_msg_write">
+                      <input type="text" class="write_msg" placeholder="Type a message" #msgInput />
+                      <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true" (click)="send()"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+              <p class="text-center top_spac"> Design by <a target="_blank" href="#">Sunil Rajput</a></p>
+              
+            </div></div>
 
 </vetweb-layout>

@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { NewUserModel } from '../models/new.user.model';
 import { UserInfo } from '../models/user.info';
+import { Contact } from 'src/app/chat/contacts/contact';
 
 const base:string = `${environment.WS_ADDRESS}/account`;
 
@@ -30,6 +31,11 @@ export class UserService {
 
     public findUserByRecoveryHash(email: string): Observable<string> {
         return this.http.get(`${base}/using-hash/${email}`, { responseType: 'text' });
+    }
+    
+    public allContacts(currentUser: string): Observable<Contact[ ]> {
+        let httpParams = new HttpParams().set('currentUser', currentUser);
+        return this.http.get<Contact[ ]>(`${base}/contacts`,{ params: httpParams});
     }
 
 }
