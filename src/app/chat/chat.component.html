@@ -5,7 +5,9 @@
         <div class="messaging">
               <div class="inbox_msg">
 
-                <vetweb-contacts [contacts]="contacts">
+                <vetweb-contacts [contacts]="contacts" [user]="user" (changeContactEvent)="handleNewConversation($event)">
+                  <vetweb-search-message>
+                  </vetweb-search-message>
                 </vetweb-contacts>
 
                 <div class="mesgs">

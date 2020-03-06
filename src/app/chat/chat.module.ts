@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ChatComponent } from './chat.component';
 import { ChatRoutingModule } from './chat-routing.module';
 import { ContactsComponent } from './contacts/contacts.component';
+import { SearchMessageComponent } from './search-message/search-message.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { ContactsComponent } from './contacts/contacts.component';
   ],
   declarations: [
     ChatComponent,
-    ContactsComponent
+    ContactsComponent,
+    SearchMessageComponent
   ],
   exports: [
     ChatComponent
