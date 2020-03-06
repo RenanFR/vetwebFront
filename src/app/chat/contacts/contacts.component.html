@@ -8,14 +8,16 @@
     <div  *ngFor="let contact of contacts"  [ngClass]="{'chat_list': true, 'active_chat': contact.mostRecentContact}">
       <div class="chat_people">
         <div class="chat_img" (click)="selectUser(contact)"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-        <div *ngIf="hasMessagesForMe(contact)" class="chat_ib">
+        <div *ngIf="hasMessagesForMe(contact); else noMessages" class="chat_ib">
           <h5>{{ contact.user.userEmail }} <span class="chat_date">{{ true ? contact.messages[contact.messages.length - 1].sentAt : '' }}</span></h5>
           <p>{{ true ? contact.messages[contact.messages.length - 1].text : 'No messages yet' }}</p>
         </div>
-        <div *ngIf="!hasMessagesForMe(contact)" class="chat_ib">
-          <h5>{{ contact.user.userEmail }} <span class="chat_date"></span></h5>
-          <p>No messages yet</p>
-        </div>
+        <ng-template #noMessages>
+          <div class="chat_ib">
+            <h5>{{ contact.user.userEmail }} <span class="chat_date"></span></h5>
+            <p>No messages yet</p>
+          </div>
+        </ng-template>
       </div>
     </div>
     

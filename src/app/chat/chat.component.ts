@@ -92,6 +92,10 @@ export class ChatComponent implements OnInit, OnDestroy {
         this.setType(msg);
         this.messages.push(msg);
         this.updateContactsView(msg);
+        if (msg.idSender !== this.selectedContact.user.id) {
+            this.messages = this.messages.filter(m => m.idSender === msg.idSender && m.idReceiver === this.user.id);
+            this.selectedContact = this.contacts.find(c => c.user.id === msg.idSender);
+        }
         this.changeDetectorRef.detectChanges();
     }
 
@@ -110,12 +114,8 @@ export class ChatComponent implements OnInit, OnDestroy {
 
     private filterMyMessages(): void {
         this.messages = this.messages.filter((m) => m.idSender === this.user.id || m.idReceiver === this.user.id);
-        this.contacts.forEach((c) => {
-            c.messages.forEach((m) => {
-              if (m.idSender !== this.user.id && m.idReceiver !== this.user.id) {
-                c.messages = c.messages.splice(c.messages.indexOf(m), 1);
-              }
-            });
+        this.contacts.forEach(c => {
+            c.messages = c.messages.filter(m => m.idSender === this.user.id || m.idReceiver === this.user.id);
         });
     }
 
