@@ -1,6 +1,6 @@
-import { Inject, Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { Injectable } from "@angular/core";
 import * as jtw_decode from 'jwt-decode';
+import { BehaviorSubject } from "rxjs";
 import { UserToken } from '../../login/models/user.token';
 import { UsefulConstants } from '../utilities/useful.constants';
 
@@ -26,6 +26,7 @@ export class TokenService {
 
     removeToken(): void {
         window.localStorage.removeItem('token');
+        window.localStorage.removeItem('currentUser');
     }
 
     isTokenSet(): boolean {

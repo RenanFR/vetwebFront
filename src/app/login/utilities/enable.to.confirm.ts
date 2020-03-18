@@ -5,7 +5,7 @@ import { TokenService } from '../../shared/services/token.service';
 import { UserToken } from '../models/user.token';
 
 @Injectable()
-export class EnableToLogin implements CanActivate {
+export class EnableToConfirm implements CanActivate {
 
     constructor(
         private router: Router,
@@ -16,15 +16,14 @@ export class EnableToLogin implements CanActivate {
         boolean | Observable<boolean> | Promise<boolean> {
             let user: UserToken = JSON.parse(localStorage.getItem('currentUser')) as UserToken;
         if (this.tokenService.isTokenSet()) {
-            if (!user.usingTempPassword) {
-                this.router.navigate(['dashboard']);
-                return false;
+            if (user.usingTempPassword) {
+                return true;
             } else {
-                this.router.navigate(['auth', 'confirm-account', user.id]);
+                this.router.navigate(['dashboard']);
                 return false;                
             }
         } else {
-            return true;
+            this.router.navigate(['/auth', 'login']);
         }
     }
 

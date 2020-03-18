@@ -19,6 +19,8 @@ import { ForgetPasswordComponent } from './forget/forget.password.component';
 import { ResetPasswordComponent } from './forget/reset.password.component';
 import { AuthenticationService } from './services/authentication.service';
 import { LayoutModule } from '../layout/layout.module';
+import { AccountConfirmationComponent } from './confirmation/account.confirmation.component';
+import { EnableToConfirm } from './utilities/enable.to.confirm';
 
 @NgModule({
   imports: [
@@ -38,7 +40,8 @@ import { LayoutModule } from '../layout/layout.module';
     LoginComponent,
     UserRegistrationComponent,
     ForgetPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    AccountConfirmationComponent
   ],
   exports: [
     AuthBaseComponent,
@@ -56,7 +59,8 @@ import { LayoutModule } from '../layout/layout.module';
       useFactory: getGoogleClientCredentials
     },
     UserExistsValidator,
-    isLoggedGuard
+    isLoggedGuard,
+    EnableToConfirm
   ]
 })
 export class LoginModule { }

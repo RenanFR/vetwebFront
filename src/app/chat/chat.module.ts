@@ -10,6 +10,7 @@ import { ChatComponent } from './chat.component';
 import { ChatRoutingModule } from './chat-routing.module';
 import { ContactsComponent } from './contacts/contacts.component';
 import { SearchMessageComponent } from './search-message/search-message.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -21,6 +22,8 @@ import { SearchMessageComponent } from './search-message/search-message.componen
     ChatRoutingModule,
     HttpClientModule,
     TranslateModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   declarations: [
     ChatComponent,

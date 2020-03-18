@@ -6,5 +6,6 @@ export interface Contact {
     user: UserToken;
     messages: Message[ ];
     mostRecentContact: boolean;
+    lastFoundedMessage: Message;
 
 }

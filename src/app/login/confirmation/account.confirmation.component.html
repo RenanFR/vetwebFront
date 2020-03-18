@@ -1,0 +1,50 @@
+<div class="login-content">
+    <div class="login-logo">
+        <a href="index.html">
+            <img class="align-content" src="assets/images/LogoMakr_VetWeb.png" alt="">
+        </a>
+    </div>
+    <div class="login-form">
+        <form [formGroup]="accountConfirmationForm" (submit)="onConfirm()">
+            <div class="form-group">
+                <label>{{'AUTHENTICATION.EMAIL' | translate}}</label>
+                <input formControlName="userMail" type="email" class="form-control" placeholder="Email" disabled>
+            </div>
+
+            <div class="form-group">
+                <label>Confirmation Code</label>
+                <input formControlName="confirmationCode" type="text" class="form-control" placeholder="Confirmation Code">
+
+                <vetweb-error *ngIf="(accountConfirmationForm.get('confirmationCode').errors?.wrongConfirmationCode && accountConfirmationForm.get('confirmationCode').touched)" errorMessage="Invalid confirmation code"></vetweb-error>
+                <small *ngIf="accountConfirmationForm.get('confirmationCode').valid && accountConfirmationForm.get('confirmationCode').touched" class="text-success">Valid confirmation code</small>
+            </div>
+            
+            <div class="form-group">
+                <label>Temporary Password</label>
+                <input formControlName="temporaryPassword" type="password" class="form-control" placeholder="Temporary Password">
+                
+                <vetweb-error *ngIf="(accountConfirmationForm.get('temporaryPassword').errors?.wrongTemporaryPassword && accountConfirmationForm.get('temporaryPassword').touched)" errorMessage="Invalid temporary password"></vetweb-error>
+                <small *ngIf="accountConfirmationForm.get('temporaryPassword').valid && accountConfirmationForm.get('temporaryPassword').touched" class="text-success">Valid temporary password</small>
+            </div>
+
+            <div class="form-group">
+                <label>{{'AUTHENTICATION.PASSWORD' | translate}}</label>
+                <input formControlName="password" type="password" class="form-control" placeholder="{{'AUTHENTICATION.PASSWORD' | translate}}">
+
+                <vetweb-error *ngIf="(accountConfirmationForm.get('password').errors?.required && accountConfirmationForm.get('password').touched)" errorMessage="{{'FORMS.MESSAGES.REQUIRED_PASSWORD' | translate}}"></vetweb-error>
+            </div>
+
+            <div class="form-group">
+                <label>{{'AUTHENTICATION.PASSWORD_CONFIRM' | translate}}</label>
+                <input formControlName="passwordConfirmation" type="password" class="form-control" placeholder="{{'AUTHENTICATION.PASSWORD_CONFIRM' | translate}}">
+                <small *ngIf="(accountConfirmationForm.get('password').valid && accountConfirmationForm.get('passwordConfirmation').valid && !accountConfirmationForm.errors?.passConfDontMatch)" class="text-success">{{'FORMS.MESSAGES.PASS_CONF_SAME' | translate}}</small>
+        
+                <vetweb-error *ngIf="(accountConfirmationForm.get('passwordConfirmation').errors?.required && accountConfirmationForm.get('passwordConfirmation').touched)" errorMessage="{{'FORMS.MESSAGES.PASS_CONF' | translate}}"></vetweb-error>
+                <vetweb-error *ngIf="(accountConfirmationForm.errors?.passConfDontMatch && accountConfirmationForm.get('passwordConfirmation').touched)" errorMessage="{{'FORMS.MESSAGES.PASS_CONF_NOT_SAME' | translate}}"></vetweb-error>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-flat m-b-15" [disabled]="accountConfirmationForm.invalid">Confirmar conta</button>
+        </form>
+    </div>
+
+</div>

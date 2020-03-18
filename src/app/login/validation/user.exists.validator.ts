@@ -3,6 +3,7 @@ import { AbstractControl } from "@angular/forms";
 import { debounceTime, switchMap, map, first, tap } from "rxjs/operators";
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
+import { UserToken } from '../models/user.token';
 
 @Injectable()
 export class UserExistsValidator {
@@ -56,5 +57,27 @@ export class UserExistsValidator {
                 .pipe(first());
         };
     }
+    
+    public checkConfirmationCode(userId: number): Function {
+        return (control: AbstractControl) => {
+            return control
+                .valueChanges
+                .pipe(debounceTime(300))
+                .pipe(switchMap(typedCode => this.userService.checkConfirmationCode(userId, typedCode)))
+                .pipe(map(result => !result? {wrongConfirmationCode: true} : null))
+                .pipe(first());
+        };
+    }   
+    
+    public checkTemporaryPassword(userId: number): Function {
+        return (control: AbstractControl) => {
+            return control
+                .valueChanges
+                .pipe(debounceTime(300))
+                .pipe(switchMap(typedPassword => this.userService.checkTemporaryPassword(userId, typedPassword)))
+                .pipe(map(result => !result? {wrongTemporaryPassword: true} : null))
+                .pipe(first());
+        };
+    }    
 
 }

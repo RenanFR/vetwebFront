@@ -6,6 +6,10 @@ export class NewUserModel {
 
     userName: string;
 
+    confirmationCode: string;
+
+    temporaryPassword: string;
+    
     password: string;
 
     passwordConfirmation: string;

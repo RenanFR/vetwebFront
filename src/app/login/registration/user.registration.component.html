@@ -23,23 +23,6 @@
                 <vetweb-error *ngIf="newUserForm.get('userMail').errors?.emailAlreadyInUse" errorMessage="{{'FORMS.MESSAGES.USER_EXISTS' | translate}}"></vetweb-error>
 
             </div>
-            <div class="form-group">
-                <label>{{'AUTHENTICATION.PASSWORD' | translate}}</label>
-                <input formControlName="password" type="password" class="form-control" placeholder="{{'AUTHENTICATION.PASSWORD' | translate}}">
-
-                <vetweb-error *ngIf="(newUserForm.get('password').errors?.required && newUserForm.get('password').touched)" errorMessage="{{'FORMS.MESSAGES.REQUIRED_PASSWORD' | translate}}"></vetweb-error>
-
-            </div>
-
-            <div class="form-group">
-                <label>{{'AUTHENTICATION.PASSWORD_CONFIRM' | translate}}</label>
-                <input formControlName="passwordConfirmation" type="password" class="form-control" placeholder="{{'AUTHENTICATION.PASSWORD_CONFIRM' | translate}}">
-                <small *ngIf="(newUserForm.get('password').valid && newUserForm.get('passwordConfirmation').valid && !newUserForm.errors?.passConfDontMatch)" class="text-success">{{'FORMS.MESSAGES.PASS_CONF_SAME' | translate}}</small>
-        
-                <vetweb-error *ngIf="(newUserForm.get('passwordConfirmation').errors?.required && newUserForm.get('passwordConfirmation').touched)" errorMessage="{{'FORMS.MESSAGES.PASS_CONF' | translate}}"></vetweb-error>
-                <vetweb-error *ngIf="(newUserForm.errors?.passConfDontMatch && newUserForm.get('passwordConfirmation').touched)" errorMessage="{{'FORMS.MESSAGES.PASS_CONF_NOT_SAME' | translate}}"></vetweb-error>
-                
-            </div>
 
             <div class="checkbox">
                 <label>

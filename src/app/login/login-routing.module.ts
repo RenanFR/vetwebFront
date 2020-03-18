@@ -6,31 +6,41 @@ import { EnableToLogin } from './utilities/enable.to.login';
 import { UserRegistrationComponent } from './registration/user.registration.component';
 import { ForgetPasswordComponent } from './forget/forget.password.component';
 import { ResetPasswordComponent } from './forget/reset.password.component';
+import { AccountConfirmationComponent } from './confirmation/account.confirmation.component';
+import { EnableToConfirm } from './utilities/enable.to.confirm';
 
 const routes: Routes = [
   {
     path: 'auth',
     component: AuthBaseComponent,
-    canActivate: [ EnableToLogin ],
     data: {
       title: 'Authentication'
     },
     children: [
       {
         path: 'login', 
-        component: LoginComponent
+        component: LoginComponent,
+        canActivate: [ EnableToLogin ]
       },
       {
         path: 'register-user', 
-        component: UserRegistrationComponent
+        component: UserRegistrationComponent,
+        canActivate: [ EnableToLogin ]
       },
       {
         path: 'forget', 
-        component: ForgetPasswordComponent
+        component: ForgetPasswordComponent,
+        canActivate: [ EnableToLogin ]
       },
       {
         path: 'reset/:recoveryHash', 
-        component: ResetPasswordComponent
+        component: ResetPasswordComponent,
+        canActivate: [ EnableToLogin ]
+      },
+      {
+        path: 'confirm-account/:userId', 
+        component: AccountConfirmationComponent, 
+        canActivate: [ EnableToConfirm ]
       }
     ]
   }

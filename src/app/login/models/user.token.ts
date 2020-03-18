@@ -6,6 +6,10 @@ export interface UserToken {
 
     userEmail: string;
 
+    usingTempPassword: boolean;
+
+    enabled: boolean;
+    
     socialUser: boolean;
 
     inclusionDate: string;

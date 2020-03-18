@@ -1,11 +1,10 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { NewUserModel } from '../models/new.user.model';
-import { UserExistsValidator } from '../validation/user.exists.validator';
-import { UserService } from '../services/user.service';
-import { verifyPasswordConfirmationMatching } from '../validation/password.and.confirmation.dont.match';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { NewUserModel } from '../models/new.user.model';
+import { UserService } from '../services/user.service';
+import { UserExistsValidator } from '../validation/user.exists.validator';
 
 @Component({
     templateUrl: './user.registration.component.html'
@@ -15,8 +14,6 @@ export class UserRegistrationComponent implements OnInit {
     newUserForm: FormGroup;
 
     private userToRegister: NewUserModel = new NewUserModel();
-    private isFacebookSupported: boolean = false;
-    private isTwitterSupported: boolean = false;    
     
     constructor(
         private router: Router,
@@ -30,28 +27,28 @@ export class UserRegistrationComponent implements OnInit {
         this.newUserForm = this.newUserFormBuilder.group({
             userMail: [ '', [ Validators.required ], [ this.userExistsValidator.checkEmailAvailability() ] ],
             userName: [ '', [] ],
-            password: [ '', [] ],
-            passwordConfirmation: [ '', [] ],
             useTwoFactorAuth: [ false, [] ],
             termsAcceptance: [ false, [ Validators.requiredTrue ] ],
             isSocialLogin: [ false, [] ],
         }, {
-            validator: verifyPasswordConfirmationMatching
         });
     }
 
-    private onSave(): void {
+    onSave(): void {
         this.userToRegister = this.newUserForm.getRawValue() as NewUserModel;
-        this.service.signUpUser(this.userToRegister).subscribe((responseText) => {
-            Swal.fire(document.getElementById('successMessageLabel').innerText,
-            document.getElementById('successMessageText').innerText,
-            'success');
-        },
-        (shitHappened) => {
-            Swal.fire(document.getElementById('errorMessageLabel').innerText,
-            document.getElementById('errorMessageText').innerText,
-            'error');
-        });
+        this.service
+            .signUpUser(this.userToRegister)
+            .subscribe((responseText) => {
+                this.router.navigate(['/auth', 'login']);
+                Swal.fire(document.getElementById('successMessageLabel').innerText,
+                    document.getElementById('successMessageText').innerText,
+                    'success');
+            },
+            (error) => {
+                Swal.fire(document.getElementById('errorMessageLabel').innerText,
+                    document.getElementById('errorMessageText').innerText,
+                    'error');
+            });
     }
     
 }

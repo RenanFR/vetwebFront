@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Message } from './message';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 const base:string = `${environment.WS_ADDRESS}/chat`;
 
@@ -10,6 +10,8 @@ const base:string = `${environment.WS_ADDRESS}/chat`;
   providedIn: 'root'
 })
 export class ChatService {
+
+  searchingSubject: Subject<Message[ ]> = new Subject<Message[ ]>();
 
   constructor(private http: HttpClient) { }
 
@@ -20,5 +22,18 @@ export class ChatService {
   public messagesFromUser(user: string): Observable<Message[ ]> {
     return this.http.get<Message[ ]>(base + '/' + user);
   }
+  
+  public searchMessages(searchTerm: string): Observable<Message[ ]> {
+    let httpParams = new HttpParams().set('searchTerm', searchTerm);
+    return this.http.get<Message[ ]>(base + '/search', { params: httpParams});
+  }
+
+  public notifySearch(messages: Message[ ]): void {
+    this.searchingSubject.next(messages);
+  }
+
+  public getSearching(): Observable<Message[ ]> {
+    return this.searchingSubject.asObservable();
+  }  
 
 }
