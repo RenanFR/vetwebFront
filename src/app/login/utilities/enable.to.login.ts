@@ -14,18 +14,18 @@ export class EnableToLogin implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): 
         boolean | Observable<boolean> | Promise<boolean> {
-            let user: UserToken = JSON.parse(localStorage.getItem('currentUser')) as UserToken;
-        if (this.tokenService.isTokenSet()) {
-            if (!user.usingTempPassword) {
-                this.router.navigate(['dashboard']);
-                return false;
+            if (this.tokenService.isTokenSet()) {
+                let user: UserToken = JSON.parse(localStorage.getItem('currentUser')) as UserToken;
+                if (!user.usingTempPassword) {
+                    this.router.navigate(['dashboard']);
+                    return false;
+                } else {
+                    this.router.navigate(['auth', 'confirm-account', user.id]);
+                    return false;                
+                }
             } else {
-                this.router.navigate(['auth', 'confirm-account', user.id]);
-                return false;                
+                return true;
             }
-        } else {
-            return true;
-        }
     }
 
 }

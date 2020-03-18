@@ -14,17 +14,17 @@ export class EnableToConfirm implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): 
         boolean | Observable<boolean> | Promise<boolean> {
-            let user: UserToken = JSON.parse(localStorage.getItem('currentUser')) as UserToken;
-        if (this.tokenService.isTokenSet()) {
-            if (user.usingTempPassword) {
-                return true;
+            if (this.tokenService.isTokenSet()) {
+                let user: UserToken = JSON.parse(localStorage.getItem('currentUser')) as UserToken;
+                if (user.usingTempPassword) {
+                    return true;
+                } else {
+                    this.router.navigate(['dashboard']);
+                    return false;                
+                }
             } else {
-                this.router.navigate(['dashboard']);
-                return false;                
+                this.router.navigate(['/auth', 'login']);
             }
-        } else {
-            this.router.navigate(['/auth', 'login']);
-        }
     }
 
 }
