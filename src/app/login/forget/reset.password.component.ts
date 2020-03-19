@@ -40,18 +40,20 @@ export class ResetPasswordComponent implements OnInit {
         }, {
             validator: verifyNewPasswordConfirmationMatching
         });
-        this.service.findUserByRecoveryHash(this.recoveryHash).subscribe((foundedUser) => {
-            if (foundedUser !== null) {
-                let converted: any = JSON.parse(foundedUser);
-                this.user.id = converted.id;
-                this.user.userName = converted.username;
-                this.user.userMail = converted.email;
-                this.user.useTwoFactorAuth = converted.using2FA;
-                this.user.isSocialLogin = converted.socialLogin;
-            } else {
-                this.expiredOrInvalid = true;
-            }
-        });
+        this.service
+            .findUserByRecoveryHash(this.recoveryHash)
+            .subscribe((foundedUser) => {
+                if (foundedUser !== null) {
+                    let converted: any = JSON.parse(foundedUser);
+                    this.user.id = converted.id;
+                    this.user.userName = converted.username;
+                    this.user.userMail = converted.email;
+                    this.user.useTwoFactorAuth = converted.using2FA;
+                    this.user.isSocialLogin = converted.socialLogin;
+                } else {
+                    this.expiredOrInvalid = true;
+                }
+            });
     }
 
     onConfirm(): void {
