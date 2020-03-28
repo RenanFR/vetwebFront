@@ -6,8 +6,15 @@
               <div class="inbox_msg">
 
                 <vetweb-contacts [contacts]="contacts" [user]="user" (changeContactEvent)="handleNewConversation($event)">
+                  
+                  <button type="button" 
+                      (click)="configModal.openSettings()">
+                        <i class="fa fa-cogs" aria-hidden="true"></i> 
+                  </button>
+
                   <vetweb-search-message>
                   </vetweb-search-message>
+
                 </vetweb-contacts>
 
                 <div class="mesgs">
@@ -23,18 +30,21 @@
                     </div>
 
                   </div>
+
                   <div class="type_msg">
                     <div class="input_msg_write">
                       <input type="text" class="write_msg" placeholder="Type a message" #msgInput />
                       <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true" (click)="send()"></i></button>
                     </div>
                   </div>
+
                 </div>
               </div>
-              
               
               <p class="text-center top_spac"> Design by <a target="_blank" href="#">Sunil Rajput</a></p>
               
             </div></div>
+
+            <vetweb-chat-config [currentUser]="user.userEmail" #configModal></vetweb-chat-config>
 
 </vetweb-layout>

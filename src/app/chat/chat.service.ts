@@ -3,6 +3,7 @@ import { Message } from './message';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, Subject } from 'rxjs';
+import { ChatConfiguration } from './config/chat.configuration';
 
 const base:string = `${environment.WS_ADDRESS}/chat`;
 
@@ -18,7 +19,7 @@ export class ChatService {
   public send(message: Message): Observable<Message> {
     return this.http.post<Message>(base, message);
   }
-
+  
   public messagesFromUser(user: string): Observable<Message[ ]> {
     return this.http.get<Message[ ]>(base + '/' + user);
   }
@@ -35,5 +36,13 @@ export class ChatService {
   public getSearching(): Observable<Message[ ]> {
     return this.searchingSubject.asObservable();
   }  
+
+  public getConfig(user: string): Observable<ChatConfiguration> {
+    return this.http.get<ChatConfiguration>(base + '/config/' + user);
+  }
+
+  public saveConfig(chatConfiguration: ChatConfiguration): Observable<Boolean> {
+    return this.http.post<Boolean>(`${base}/config`, chatConfiguration);
+  }
 
 }

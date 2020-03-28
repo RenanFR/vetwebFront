@@ -1,0 +1,33 @@
+<div class="modal fade" id="chatConfigModal" tabindex="-1" role="dialog" aria-labelledby="chatConfigModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="chatConfigModalLabel">Configuração do chat</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" #btnModalClose>
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+
+            Disponibilidade de atendimento
+            <vetweb-chat-availability  
+                #availabilityInputs
+                *ngFor="let day of days" 
+                [weekDay]="day">
+            </vetweb-chat-availability>
+
+            Mensagem automática (Fora do horário)
+            <textarea id="automaticResponse" [(ngModel)]="automaticResponse">
+            </textarea>
+
+         </div>
+         <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Desfazer</button>
+          <button type="button" class="btn btn-primary" (click)="update()">Confirmar mudanças</button>
+        </div>
+      </div>
+  </div>
+</div>
+
+<button type="button" class="btn btn-danger mb-1" data-toggle="modal" data-target="#chatConfigModal" #btnModal hidden>
+</button>

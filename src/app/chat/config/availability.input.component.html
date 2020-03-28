@@ -1,0 +1,11 @@
+<div>
+
+  <i *ngIf="!weekDay.enabled" class="fa fa-toggle-off" aria-hidden="true" (click)="enableDisable()"></i>
+  <i *ngIf="weekDay.enabled" class="fa fa-toggle-on" aria-hidden="true" (click)="enableDisable()"></i>
+
+  <input type="time" id="{{ 'start' + weekDay.name }}" name="{{ 'start' + weekDay.name }}" min="00:00" max="23:59" [(ngModel)]="weekDay.startTime">
+  <input type="time" id="{{ 'end' + weekDay.name }}" name="{{ 'end' + weekDay.name }}" min="00:00" max="23:59" [(ngModel)]="weekDay.endTime">
+
+  <small>{{ weekDay.name }}</small>
+
+</div>

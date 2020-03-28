@@ -1,12 +1,13 @@
-import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef, OnDestroy, AfterViewInit } from '@angular/core';
-import { Message } from './message';
-import { ChatService } from './chat.service';
-import { WebSocketAPI } from './websocket-api';
-import { TokenService } from '../shared/services/token.service';
+import { ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ModalComponent } from '../layout/modal/modal.component';
 import { UserToken } from '../login/models/user.token';
-import { Contact } from './contacts/contact';
 import { UserService } from '../login/services/user.service';
+import { TokenService } from '../shared/services/token.service';
+import { ChatService } from './chat.service';
+import { Contact } from './contacts/contact';
 import { ContactsComponent } from './contacts/contacts.component';
+import { Message } from './message';
+import { WebSocketAPI } from './websocket-api';
 
 @Component({
     templateUrl: './chat.component.html',
@@ -21,6 +22,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     selectedContact: Contact;
 
     @ViewChild('msgInput') msgInput: ElementRef<HTMLInputElement>;
+    @ViewChild('configModal') modal: ModalComponent;
     @ViewChild(ContactsComponent) contactsComponent: ContactsComponent;
 
     constructor(
