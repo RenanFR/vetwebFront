@@ -8,6 +8,7 @@ import { Contact } from './contacts/contact';
 import { ContactsComponent } from './contacts/contacts.component';
 import { Message } from './message';
 import { WebSocketAPI } from './websocket-api';
+import Swal from 'sweetalert2';
 
 @Component({
     templateUrl: './chat.component.html',
@@ -73,6 +74,13 @@ export class ChatComponent implements OnInit, OnDestroy {
         this.chatService.send(msg).subscribe((r) => {
             msg.sentAt = r.sentAt;
             this.updateContactsView(r);
+        },
+        (error) => {
+            if (error.status === 400) {
+                Swal.fire('Erro no envio da mensagem',
+                'Você não pode enviar mensagens fora da faixa de dia e horário de disponibilidade que escolheu, caso queira interagir favor altere suas configurações de dia e horário disponível',
+                'error');                
+            }
         });
     }
 
