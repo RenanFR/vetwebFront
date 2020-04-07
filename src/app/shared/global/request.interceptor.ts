@@ -1,6 +1,8 @@
+import { HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { HttpInterceptor, HttpEvent, HttpHandler, HttpRequest, HttpEventType, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Router } from '@angular/router';
+import { Observable, throwError } from "rxjs";
+import { catchError } from 'rxjs/operators';
 import { TokenService } from '../services/token.service';
 
 export const INTERCEPTOR_SKIP_HEADER = 'X-Skip-Interceptor';
@@ -11,6 +13,7 @@ export class RequestInterceptor implements HttpInterceptor {
     headers: HttpHeaders = new HttpHeaders();
 
     constructor(
+        private router: Router,
         private tokenService: TokenService
     ){}
 
@@ -29,7 +32,14 @@ export class RequestInterceptor implements HttpInterceptor {
             });
         }
         return next
-            .handle(req);
+            .handle(req)
+            .pipe(catchError(e => {
+                if (e.error.status === 401 && e.error.errorMessage === 'Your Token has expired') {
+                    this.tokenService.removeToken();
+                    this.router.navigate(['/']);
+                }
+                throw e;
+            }));
     }
 
 }
