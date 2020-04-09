@@ -1,23 +1,30 @@
-import { Injectable, ErrorHandler } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandler, Injectable, Injector } from '@angular/core';
+import { Router } from '@angular/router';
+import { TokenService } from '../services/token.service';
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
 
-    constructor(
-        // private tokenService:TokenService,
-        // private router:Router
-    ){}
+    private router: Router;
+    private tokenService: TokenService;
+
+    constructor(private injector: Injector){ }
 
     handleError(errorResponse: Error | HttpErrorResponse) {
-        // if (errorResponse instanceof HttpErrorResponse) {
-        //     console.log(errorResponse.error.message);
-        //     if (errorResponse.error.exception === 'io.jsonwebtoken.ExpiredJwtException') {
-        //         this.tokenService.removeToken();
-        //         this.router.navigate(['']);
-        //     }
-        // }
-        console.log(errorResponse);
+        console.log('Tratamento global de erros da aplicação invocado');
+        if (errorResponse instanceof HttpErrorResponse) {
+            if (errorResponse.error.status === 401 && errorResponse.error.errorMessage === 'Your Token has expired') {
+                this.router = this.injector.get(Router);
+                this.tokenService = this.injector.get(TokenService);
+                this.tokenService.removeToken();
+                this.router
+                    .navigate(['/auth', 'login'])
+                    .then(() => {
+                        location.reload();
+                    });
+            }
+        }
     }
 
 }
